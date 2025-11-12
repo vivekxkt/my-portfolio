@@ -17,11 +17,11 @@ function HighlightCard({ stat, delay }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.4 }}
-      className="will-change-opacity transform-gpu"
+      className="will-change-transform will-change-opacity transform-gpu"
     >
       <div
         onClick={createRipple}
