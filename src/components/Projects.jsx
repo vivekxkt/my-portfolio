@@ -1,12 +1,10 @@
 import { useState, useRef } from "react";
 
-
 function Projects() {
   const [openProject, setOpenProject] = useState(null);
   const [modalIndex, setModalIndex] = useState(0);
   const carouselRef = useRef(null);
 
-  // ✅ More projects to enable real sliding
   const demo = [
     {
       title: "Portfolio Website",
@@ -16,11 +14,7 @@ function Projects() {
       link: "#",
       github: "#",
       tags: ["React", "Tailwind", "Animations"],
-      images: [
-        "/src/assets/p1.png",
-        "/src/assets/p2.png"
-    
-      ],
+      images: ["/src/assets/p1.png", "/src/assets/p2.png"],
     },
     {
       title: "UI Components Library",
@@ -102,17 +96,23 @@ function Projects() {
   };
 
   return (
-    <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
+    <section className="relative max-w-7xl mx-auto px-6 py-24 overflow-hidden">
+      {/* Deep black background + faint cyan glow */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black to-black" />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-cyan-400/5 blur-[160px] rounded-full animate-pulse -z-10" />
 
       {/* SECTION TITLE */}
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-semibold">Projects</h2>
-        <p className="text-gray-400 mt-2">Some things I've built</p>
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+          My <span className="text-cyan-400">Projects</span>
+        </h2>
+        <p className="text-gray-400 mt-2 text-sm sm:text-base">
+          Some things I've built
+        </p>
       </div>
 
       {/* FLEX WRAPPER FOR ARROWS + SLIDER */}
       <div className="flex items-center gap-6">
-
         {/* LEFT ARROW */}
         <button
           onClick={() => scrollCarousel("left")}
@@ -130,24 +130,33 @@ function Projects() {
           {demo.map((p, i) => (
             <div
               key={i}
-              className="min-w-[90%] sm:min-w-[45%] lg:min-w-[30%] 
-                bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6
-                cursor-pointer transition-all duration-300
-                hover:border-cyan-400/40 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)]"
-
+              className="relative group min-w-[90%] sm:min-w-[45%] lg:min-w-[30%] 
+                         p-6 rounded-2xl bg-white/[0.05] border border-white/[0.1] 
+                         backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)] 
+                         hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] 
+                         hover:border-cyan-400/40 transition-all duration-300 cursor-pointer overflow-hidden"
               onClick={() => {
                 setOpenProject(p);
                 setModalIndex(0);
               }}
             >
-              <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
+              {/* Hover Glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-400/20 to-transparent blur-lg" />
+              {/* Cyan streak */}
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent opacity-60" />
+
+              <div className="w-full h-40 rounded-lg overflow-hidden mb-4 relative z-10">
                 <img src={p.images[0]} className="w-full h-full object-cover" />
               </div>
 
-              <h3 className="text-xl font-semibold">{p.title}</h3>
-              <p className="text-gray-300 mt-2 text-sm">{p.description}</p>
+              <h3 className="text-xl font-semibold text-white relative z-10">
+                {p.title}
+              </h3>
+              <p className="text-gray-300 mt-2 text-sm relative z-10">
+                {p.description}
+              </p>
 
-              <div className="flex flex-wrap gap-2 mt-4">
+              <div className="flex flex-wrap gap-2 mt-4 relative z-10">
                 {p.tags.map((tag, idx) => (
                   <span
                     key={idx}
@@ -175,13 +184,13 @@ function Projects() {
       {/* MODAL */}
       {openProject && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-md flex justify-center items-center 
-                     z-50"
+          className="fixed inset-0 bg-black/70 backdrop-blur-md flex justify-center items-center z-50"
           onClick={() => setOpenProject(null)}
         >
           <div
-            className="bg-white/10 border border-white/20 rounded-xl p-8 w-full max-w-3xl 
-                       max-h-[85vh] overflow-y-auto animate-[fadeIn_0.25s_ease-out]"
+            className="bg-white/[0.08] border border-white/[0.15] rounded-xl p-8 w-full max-w-3xl 
+                       max-h-[85vh] overflow-y-auto shadow-[0_0_25px_rgba(34,211,238,0.15)]
+                       animate-[fadeIn_0.25s_ease-out]"
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-3xl font-semibold text-white mb-4">
@@ -246,7 +255,6 @@ function Projects() {
           </div>
         </div>
       )}
-
     </section>
   );
 }
