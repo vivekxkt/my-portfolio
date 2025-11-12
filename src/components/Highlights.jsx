@@ -1,15 +1,8 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useState as useReactState } from "react";
+import { useState } from "react";
 
 function HighlightCard({ stat, delay }) {
   const [ripples, setRipples] = useState([]);
-  const [isMobile, setIsMobile] = useReactState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsMobile(window.innerWidth < 640); // disable animation for screens <640px
-    }
-  }, []);
 
   const createRipple = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -25,12 +18,10 @@ function HighlightCard({ stat, delay }) {
   return (
     <motion.div
       onClick={createRipple}
-      {...(!isMobile && {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        transition: { delay, duration: 0.45 },
-        viewport: { once: true },
-      })}
+      initial={{ y: 25 }}
+      whileInView={{ y: 0 }}
+      transition={{ delay, duration: 0.45, ease: "easeOut" }}
+      viewport={{ once: true }}
       className="relative group p-6 sm:p-8 rounded-2xl 
                  bg-white/[0.05] border border-white/[0.1] 
                  backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
