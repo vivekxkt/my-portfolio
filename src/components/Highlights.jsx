@@ -18,10 +18,10 @@ function HighlightCard({ stat, delay }) {
   return (
     <motion.div
       onClick={createRipple}
-      initial={{ y: 25 }}
-      whileInView={{ y: 0 }}
-      transition={{ delay, duration: 0.45, ease: "easeOut" }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay, duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.4 }}
       className="relative group p-6 sm:p-8 rounded-2xl 
                  bg-white/[0.05] border border-white/[0.1] 
                  backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
