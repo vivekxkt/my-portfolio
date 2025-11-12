@@ -19,15 +19,15 @@ function HighlightCard({ stat, delay }) {
     <motion.div
       layout
       onClick={createRipple}
-      initial={{ opacity: 0, y: 15 }}   // 👈 reduced vertical motion for mobile smoothness
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.45 }}
-      viewport={{ once: true, amount: 0.3 }}
+      transition={{ delay, duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.4 }}
       className="relative group p-6 sm:p-8 rounded-2xl 
                 bg-white/[0.05] border border-white/[0.1] 
                 backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
                 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
-                transition-all duration-300 overflow-hidden
+                transition duration-300 overflow-hidden
                 text-center cursor-pointer select-none will-change-transform"
     >
 
