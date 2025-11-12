@@ -18,17 +18,19 @@ function HighlightCard({ stat, delay }) {
   return (
     <motion.div
       onClick={createRipple}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, scale: 0.999 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ delay, duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.4 }}
       className="relative group p-6 sm:p-8 rounded-2xl 
-                 bg-white/[0.05] border border-white/[0.1] 
-                 backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
-                 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
-                 transition duration-300 overflow-hidden
-                 text-center cursor-pointer select-none will-change-transform"
+                bg-white/[0.05] border border-white/[0.1] 
+                backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
+                hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
+                transition duration-300 overflow-hidden
+                text-center cursor-pointer select-none
+                will-change-opacity transform-gpu [backface-visibility:hidden]"
     >
+
       {/* Hover Glow */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-400/20 to-transparent blur-lg" />
 
