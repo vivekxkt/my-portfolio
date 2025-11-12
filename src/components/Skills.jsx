@@ -1,69 +1,22 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-function SkillCard({ skill }) {
+function Skills() {
   const [ripples, setRipples] = useState([]);
 
-  const createRipple = (e) => {
+  const createRipple = (e, i) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
-    const newRipple = { x, y, size, id: Date.now() };
+    const newRipple = { x, y, size, id: Date.now() + i };
 
-    setRipples([newRipple]);
-    setTimeout(() => setRipples([]), 600);
+    setRipples((prev) => [...prev, newRipple]);
+    setTimeout(() => {
+      setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
+    }, 600);
   };
 
-  return (
-    <motion.div
-      onClick={createRipple}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45 }}
-      viewport={{ once: true }}
-      className="relative group p-6 sm:p-8 rounded-2xl 
-                 bg-white/[0.05] border border-white/[0.1] 
-                 backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
-                 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
-                 transition-all duration-300 overflow-hidden
-                 flex flex-col items-center justify-center cursor-pointer select-none"
-    >
-      {/* Hover Glow */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-400/20 to-transparent blur-lg" />
-
-      {/* Cyan streak */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent opacity-60" />
-
-      {/* Ripple Effect */}
-      {ripples.map((ripple) => (
-        <span
-          key={ripple.id}
-          className="absolute rounded-full animate-ripple pointer-events-none"
-          style={{
-            top: ripple.y,
-            left: ripple.x,
-            width: ripple.size,
-            height: ripple.size,
-            background: `radial-gradient(circle, rgba(34,211,238,0.4) 0%, transparent 70%)`,
-          }}
-        />
-      ))}
-
-      {/* Icon */}
-      <div className="relative z-10 group-hover:scale-110 transition-transform duration-300">
-        {skill.icon}
-      </div>
-
-      {/* Name */}
-      <p className="text-gray-200 text-base sm:text-lg font-medium mt-4 relative z-10">
-        {skill.name}
-      </p>
-    </motion.div>
-  );
-}
-
-function Skills() {
   const skills = [
     { name: "React", icon: <i className="devicon-react-original colored text-5xl"></i> },
     { name: "Tailwind CSS", icon: <i className="devicon-tailwindcss-plain colored text-5xl"></i> },
@@ -94,7 +47,59 @@ function Skills() {
       {/* Skills Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8">
         {skills.map((skill, i) => (
-          <SkillCard key={i} skill={skill} />
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.08, duration: 0.45, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.4 }}
+            className="will-change-transform will-change-opacity transform-gpu"
+          >
+            {/* actual card content (blur + ripple inside, static layer) */}
+            <div
+              onClick={(e) => createRipple(e, i)}
+              className="relative group p-6 sm:p-8 rounded-2xl 
+                         bg-white/[0.05] border border-white/[0.1] 
+                         backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
+                         hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
+                         transition duration-300 overflow-hidden
+                         flex flex-col items-center justify-center cursor-pointer select-none"
+            >
+              {/* Hover Glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-400/20 to-transparent blur-lg" />
+
+              {/* Cyan streak */}
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent opacity-60" />
+
+              {/* Ripple effect */}
+              {ripples.map(
+                (ripple) =>
+                  ripple.id.toString().endsWith(i.toString()) && (
+                    <span
+                      key={ripple.id}
+                      className="absolute rounded-full animate-ripple pointer-events-none"
+                      style={{
+                        top: ripple.y,
+                        left: ripple.x,
+                        width: ripple.size,
+                        height: ripple.size,
+                        background: `radial-gradient(circle, rgba(34,211,238,0.4) 0%, transparent 70%)`,
+                      }}
+                    />
+                  )
+              )}
+
+              {/* Icon */}
+              <div className="relative z-10 group-hover:scale-110 transition-transform duration-300">
+                {skill.icon}
+              </div>
+
+              {/* Name */}
+              <p className="text-gray-200 text-base sm:text-lg font-medium mt-4 relative z-10">
+                {skill.name}
+              </p>
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>

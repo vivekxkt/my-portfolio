@@ -15,47 +15,53 @@ function AboutCard({ card, delay }) {
     setTimeout(() => setRipples([]), 600);
   };
 
+  // ✅ FIXED STRUCTURE: motion.div wrapper only handles animation
   return (
     <motion.div
-      onClick={createRipple}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.45 }}
-      viewport={{ once: true }}
-      className="relative group p-6 sm:p-8 rounded-2xl 
-                 bg-white/[0.05] border border-white/[0.1] 
-                 backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
-                 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
-                 transition-all duration-300 overflow-hidden
-                 cursor-pointer select-none"
+      transition={{ delay, duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.4 }}
+      className="will-change-transform will-change-opacity transform-gpu"
     >
-      {/* Hover glow */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-400/20 to-transparent blur-lg" />
+      {/* inner card stays static (no animation here) */}
+      <div
+        onClick={createRipple}
+        className="relative group p-6 sm:p-8 rounded-2xl 
+                   bg-white/[0.05] border border-white/[0.1] 
+                   backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.05)]
+                   hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
+                   transition duration-300 overflow-hidden
+                   cursor-pointer select-none"
+      >
+        {/* Hover glow */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-400/20 to-transparent blur-lg" />
 
-      {/* Cyan streak */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent opacity-60" />
+        {/* Cyan streak */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent opacity-60" />
 
-      {/* Ripple Effect */}
-      {ripples.map((ripple) => (
-        <span
-          key={ripple.id}
-          className="absolute rounded-full animate-ripple pointer-events-none"
-          style={{
-            top: ripple.y,
-            left: ripple.x,
-            width: ripple.size,
-            height: ripple.size,
-            background: `radial-gradient(circle, rgba(34,211,238,0.4) 0%, transparent 70%)`,
-          }}
-        />
-      ))}
+        {/* Ripple Effect */}
+        {ripples.map((ripple) => (
+          <span
+            key={ripple.id}
+            className="absolute rounded-full animate-ripple pointer-events-none"
+            style={{
+              top: ripple.y,
+              left: ripple.x,
+              width: ripple.size,
+              height: ripple.size,
+              background: `radial-gradient(circle, rgba(34,211,238,0.4) 0%, transparent 70%)`,
+            }}
+          />
+        ))}
 
-      <h3 className="text-xl sm:text-2xl font-semibold text-cyan-400 mb-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300">
-        {card.title}
-      </h3>
-      <p className="text-gray-300 text-sm sm:text-base leading-relaxed relative z-10">
-        {card.desc}
-      </p>
+        <h3 className="text-xl sm:text-2xl font-semibold text-cyan-400 mb-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300">
+          {card.title}
+        </h3>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed relative z-10">
+          {card.desc}
+        </p>
+      </div>
     </motion.div>
   );
 }
@@ -89,8 +95,8 @@ function About() {
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
           I like building modern, responsive interfaces that feel smooth and balanced.
-          I work with JavaScript, React, and clean UI patterns to turn ideas into 
-          intuitive experiences. I learn fast, experiment often, and enjoy creating 
+          I work with JavaScript, React, and clean UI patterns to turn ideas into
+          intuitive experiences. I learn fast, experiment often, and enjoy creating
           things that look good and feel good to use.
         </p>
       </div>
