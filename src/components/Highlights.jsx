@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-function HighlightCard({ stat, delay }) {
+function HighlightCard({ stat, index }) {
   const [ripples, setRipples] = useState([]);
 
   const createRipple = (e) => {
@@ -16,13 +16,15 @@ function HighlightCard({ stat, delay }) {
   };
 
   return (
+    // ✅ Animation wrapper (motion handles fade+slide)
     <motion.div
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.6, ease: "easeOut" }}
+      transition={{ delay: index * 0.08, duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.4 }}
       className="will-change-transform will-change-opacity transform-gpu"
     >
+      {/* ✅ Static content inside (no flicker) */}
       <div
         onClick={createRipple}
         className="relative group p-6 sm:p-8 rounded-2xl 
@@ -91,7 +93,7 @@ function Highlights() {
       {/* Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
         {stats.map((s, i) => (
-          <HighlightCard key={i} stat={s} delay={i * 0.1} />
+          <HighlightCard key={i} stat={s} index={i} />
         ))}
       </div>
     </section>

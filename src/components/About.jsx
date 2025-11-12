@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-function AboutCard({ card, delay }) {
+function AboutCard({ card, index }) {
   const [ripples, setRipples] = useState([]);
 
   const createRipple = (e) => {
@@ -15,16 +15,16 @@ function AboutCard({ card, delay }) {
     setTimeout(() => setRipples([]), 600);
   };
 
-  // ✅ FIXED STRUCTURE: motion.div wrapper only handles animation
   return (
+    // ✅ Animation wrapper (fade + slide-up)
     <motion.div
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.6, ease: "easeOut" }}
+      transition={{ delay: index * 0.08, duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.4 }}
       className="will-change-transform will-change-opacity transform-gpu"
     >
-      {/* inner card stays static (no animation here) */}
+      {/* ✅ Static content inside (no flicker, stable blur) */}
       <div
         onClick={createRipple}
         className="relative group p-6 sm:p-8 rounded-2xl 
@@ -104,7 +104,7 @@ function About() {
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
         {cards.map((card, i) => (
-          <AboutCard key={i} card={card} delay={i * 0.1} />
+          <AboutCard key={i} card={card} index={i} />
         ))}
       </div>
     </section>
