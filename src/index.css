@@ -13,6 +13,31 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scrollbar Track */
+::-webkit-scrollbar {
+  width: 8px;        /* thickness */
+  height: 8px;       /* for horizontal scrollbars */
+}
+
+/* Track background */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.7);
+}
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.9);
+}
+
+
 
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }

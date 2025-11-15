@@ -74,38 +74,39 @@ function ServiceCard({ item, index }) {
 }
 
 function Services() {
-  const items = [
+    const items = [
     {
-      title: "Frontend Development",
-      desc: "Clean, modern, responsive UI built with React and Tailwind.",
-      icon: "💻",
+      title: "Web Experiences",
+      desc: "Crafting fast, expressive, and smooth web interfaces that feel alive.",
+      icon: "⚡",
     },
     {
-      title: "UI/UX & Interaction",
-      desc: "Micro-interactions, motion, visual hierarchy, and smooth experience design.",
-      icon: "✨",
+      title: "Motion & Feel",
+      desc: "Micro-animations, timing, flow — making interactions satisfying and intuitive.",
+      icon: "🌊",
     },
     {
-      title: "Full Website Builds",
-      desc: "Portfolio sites, landing pages, dashboards, and multi-page applications.",
-      icon: "🚀",
+      title: "End-to-End Builds",
+      desc: "Ideas → design → development → deploy. Full project execution.",
+      icon: "🧩",
     },
     {
-      title: "Backend / APIs",
-      desc: "Node + Express REST APIs, authentication, and server logic.",
-      icon: "🛠️",
+      title: "Backend Logic",
+      desc: "APIs, authentication, data flow, and the invisible magic behind the UI.",
+      icon: "🔗",
     },
     {
-      title: "Mobile UI (Flutter)",
-      desc: "Beautiful cross-platform mobile app interfaces using Flutter.",
-      icon: "📱",
+      title: "Mobile Craft",
+      desc: "Clean, modern Flutter interfaces built with attention to detail.",
+      icon: "📲",
     },
     {
-      title: "Brand & Visual System",
-      desc: "Color, typography, components, and consistent design language.",
-      icon: "🎨",
+      title: "Visual Identity",
+      desc: "Colors, rhythm, layout, and a design system that actually feels consistent.",
+      icon: "🎯",
     },
   ];
+
 
   return (
     <section className="relative py-20 sm:py-24 px-6 max-w-6xl mx-auto overflow-hidden">

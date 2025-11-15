@@ -67,20 +67,23 @@ function AboutCard({ card, index }) {
 }
 
 function About() {
-  const cards = [
+    const cards = [
     {
-      title: "UI Engineering",
-      desc: "Clean layouts, balanced spacing, and thoughtful interface structure.",
+      title: "Web & Mobile Development",
+      desc: "I love building smooth, modern apps—whether it's a clean web interface or a full mobile experience.",
     },
     {
-      title: "Modern React",
-      desc: "Components, hooks, structure, and maintainable front-end design.",
+      title: "Creative Engineering",
+      desc: "I mix logic with creativity: elegant UI, thoughtful interactions, and efficient code that actually feels good to use.",
     },
     {
-      title: "Motion & Interaction",
-      desc: "Smooth animations that guide the eye and enhance the experience.",
+      title: "Beyond Code",
+      desc: "When I'm not coding, I'm usually playing games, vibing to loud music, or diving into anime worlds.",
     },
   ];
+
+  
+  
 
   return (
     <section className="relative py-20 sm:py-24 px-6 max-w-6xl mx-auto overflow-hidden">

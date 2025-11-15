@@ -78,7 +78,7 @@ function JourneyCard({ item, align, index }) {
 function Journey() {
   const items = [
     {
-      year: "2019",
+      year: "2021",
       title: "First Line of Code",
       text: "Started exploring programming and got hooked on building things from scratch.",
     },
@@ -89,14 +89,16 @@ function Journey() {
     },
     {
       year: "2023",
-      title: "React & Modern UI",
-      text: "Learned React, hooks, components, and started focusing on clean design systems.",
+      title: "App development using Flutter",
+      text: "Released my 1st Android application which was my biggest achievement as well as a downfall",
     },
     {
       year: "2025",
-      title: "Creative Direction",
-      text: "Exploring motion, small interactions, and developing my visual identity.",
-    },
+      title: "The Builder Era",
+      text: "Focusing on creating useful apps, better systems, and bringing all my skills together to build confidently.",
+    }
+
+
   ];
 
   return (

@@ -9,9 +9,11 @@ function Skills() {
     const size = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
-    const newRipple = { x, y, size, id: Date.now() + i };
+
+    const newRipple = { x, y, size, id: Date.now(), skillIndex: i };
 
     setRipples((prev) => [...prev, newRipple]);
+
     setTimeout(() => {
       setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
     }, 600);
@@ -19,7 +21,7 @@ function Skills() {
 
   const skills = [
     { name: "React", icon: <i className="devicon-react-original colored text-5xl"></i> },
-    { name: "Tailwind CSS", icon: <i className="devicon-tailwindcss-plain colored text-5xl"></i> },
+    { name: "MySQL", icon: <i className="devicon-mysql-plain colored text-5xl"></i> },
     { name: "GitHub", icon: <i className="devicon-github-original text-5xl"></i> },
     { name: "Python", icon: <i className="devicon-python-plain colored text-5xl"></i> },
     { name: "Flutter", icon: <i className="devicon-flutter-plain colored text-5xl"></i> },
@@ -30,8 +32,10 @@ function Skills() {
 
   return (
     <section className="relative py-20 sm:py-24 px-6 max-w-6xl mx-auto overflow-hidden">
-      {/* Deep black background + faint cyan glow */}
+      {/* Deep black background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black to-black" />
+
+      {/* Faint cyan glow */}
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-cyan-400/5 blur-[160px] rounded-full animate-pulse -z-10" />
 
       {/* Section Title */}
@@ -55,7 +59,6 @@ function Skills() {
             viewport={{ once: true, amount: 0.4 }}
             className="will-change-transform will-change-opacity transform-gpu"
           >
-            {/* actual card content (blur + ripple inside, static layer) */}
             <div
               onClick={(e) => createRipple(e, i)}
               className="relative group p-6 sm:p-8 rounded-2xl 
@@ -71,10 +74,10 @@ function Skills() {
               {/* Cyan streak */}
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent opacity-60" />
 
-              {/* Ripple effect */}
+              {/* Ripple effect — FIXED */}
               {ripples.map(
                 (ripple) =>
-                  ripple.id.toString().endsWith(i.toString()) && (
+                  ripple.skillIndex === i && (
                     <span
                       key={ripple.id}
                       className="absolute rounded-full animate-ripple pointer-events-none"
