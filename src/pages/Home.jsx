@@ -17,7 +17,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Expertise from "../components/Expertise";
 
-import QuickActions from "../components/QuickActions";  // floating global
+
 
 function Home() {
   return (
@@ -42,7 +42,7 @@ function Home() {
       <Contact />
       <Footer />
 
-      <QuickActions /> 
+     
     </>
   );
 }
