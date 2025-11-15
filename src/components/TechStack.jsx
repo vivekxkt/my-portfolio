@@ -7,17 +7,22 @@ function TechStack() {
     "Express",
     "Flutter",
     "Java",
-    "MongoDB",
+    "MySQL",
     "Firebase",
-    "Git",
+    "Github",
     "Python",
   ];
 
   return (
     <section className="py-16 px-6 overflow-hidden relative">
       {/* Faded edges */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-[#0f0f0f] to-transparent z-10"></div>
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-[#0f0f0f] to-transparent z-10"></div>
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-32 
+                bg-gradient-to-r from-[#0f0f0f] to-transparent z-10 
+                hidden md:block"></div>
+        
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-32 
+                      bg-gradient-to-l from-[#0f0f0f] to-transparent z-10
+                      hidden md:block"></div>
 
       {/* Continuous scroll container */}
       <div className="flex whitespace-nowrap w-max animate-techScroll">

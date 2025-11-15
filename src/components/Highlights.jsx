@@ -70,8 +70,8 @@ function Highlights() {
   const stats = [
     { label: "Years Coding", value: "5+" },
     { label: "Projects Completed", value: "20+" },
-    { label: "Technologies", value: "10+" },
-    { label: "Frameworks", value: "6+" },
+    { label: "Technologies", value: "15+" },
+    { label: "Frameworks", value: "3+" },
   ];
 
   return (
@@ -86,7 +86,7 @@ function Highlights() {
           My <span className="text-cyan-400">Highlights</span>
         </h2>
         <p className="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
-          A quick snapshot of what I bring to the table.
+          A quick snapshot of what I've done so far.
         </p>
       </div>
 
