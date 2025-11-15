@@ -83,22 +83,22 @@ function TestimonialCard({ t, index }) {
 function Testimonials() {
   const items = [
     {
-      name: "Riya Sharma",
-      role: "UI Designer",
-      text: "Vivek’s sense of motion and clean interfaces stands out. Everything feels smooth and intentional.",
-      img: "https://i.pravatar.cc/100?img=11",
+      name: "Dr. Kirti",
+      role: "Vice President · The MRF Team",
+      text: "I thought it was impossible to make a website beautiful as our product, but Vivek proved me wrong.",
+      img: "https://i.pravatar.cc/150?img=47",
     },
     {
-      name: "Arjun Verma",
-      role: "Full Stack Developer",
-      text: "He builds modern components with structure and clarity. Easy to collaborate with.",
-      img: "https://i.pravatar.cc/100?img=32",
+      name: "Jasnoor Singh",
+      role: "Marketing Manager (Startup)",
+      text: "I've never met a web developer/designer who truly cares about their clients like Vivek does.",
+      img: "https://i.pravatar.cc/150?img=12",
     },
     {
-      name: "Sara Kapoor",
-      role: "Product Manager",
-      text: "Fast learner, experiments with ideas, and focuses on user experience. Strong frontend instincts.",
-      img: "https://i.pravatar.cc/100?img=22",
+      name: "Karan Rana",
+      role: "Worker at Coca Cola",
+      text: "After Vivek optimised our website, our traffic increased by 50%. We can't thank him enough.",
+      img: "https://i.pravatar.cc/150?img=33",
     },
   ];
 

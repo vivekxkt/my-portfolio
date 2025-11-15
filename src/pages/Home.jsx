@@ -15,6 +15,7 @@ import Achievements from "../components/Achievements";
 
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import Expertise from "../components/Expertise";
 
 import QuickActions from "../components/QuickActions";  // floating global
 
@@ -34,6 +35,7 @@ function Home() {
       <Services />
       <Projects />
       <Testimonials />
+      <Expertise/>
       <Achievements />
       <TechStack />
 

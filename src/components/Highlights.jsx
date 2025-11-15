@@ -69,7 +69,7 @@ function HighlightCard({ stat, index }) {
 function Highlights() {
   const stats = [
     { label: "Years Coding", value: "5+" },
-    { label: "Projects Completed", value: "20+" },
+    { label: "Projects ", value: "10+" },
     { label: "Technologies", value: "15+" },
     { label: "Frameworks", value: "3+" },
   ];

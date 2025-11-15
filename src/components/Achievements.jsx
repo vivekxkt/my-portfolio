@@ -71,9 +71,9 @@ function AchievementCard({ a, index }) {
 function Achievements() {
   const items = [
     { value: "5+", label: "Years Exploring Code", icon: "⏳" },
-    { value: "20+", label: "Projects Completed", icon: "✅" },
+    { value: "10+", label: "Projects Completed", icon: "✅" },
     { value: "10+", label: "Technologies", icon: "⚡" },
-    { value: "∞", label: "Ideas & Experiments", icon: "💡" },
+    { value: "∞", label: "Ideas ", icon: "💡" },
   ];
 
   return (
