@@ -103,7 +103,8 @@ function Testimonials() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto overflow-hidden">
+    <section className="relative pt-20 sm:pt-24 pb-32 sm:pb-40 px-4 sm:px-6 max-w-6xl mx-auto overflow-hidden">
+
       {/* Background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black to-black" />
       <div

@@ -23,7 +23,8 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-5xl mx-auto px-6 py-24 text-center overflow-hidden"
+      className="relative max-w-5xl mx-auto px-6 pt-24 pb-2 text-center overflow-hidden"
+
     >
       {/* Subtle black background */}
       <div className="absolute inset-0 -z-10 bg-black" />
@@ -61,10 +62,10 @@ function Contact() {
 
         {/* Socials */}
         <div className="flex justify-center gap-8 mt-10">
-          <a href="#" className="text-gray-300 hover:text-cyan-400 text-2xl transition">
+          <a href="https://github.com/vivekxkt" className="text-gray-300 hover:text-cyan-400 text-2xl transition">
             <i className="devicon-github-original"></i>
           </a>
-          <a href="#" className="text-gray-300 hover:text-cyan-400 text-2xl transition">
+          <a href="https://www.linkedin.com/in/vivek-sharma-83284b22b/" className="text-gray-300 hover:text-cyan-400 text-2xl transition">
             <i className="devicon-linkedin-plain"></i>
           </a>
           <a href="#" className="text-gray-300 hover:text-cyan-400 text-2xl transition">

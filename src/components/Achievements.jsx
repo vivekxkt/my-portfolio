@@ -77,7 +77,8 @@ function Achievements() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-24 px-6 max-w-6xl mx-auto overflow-hidden">
+    <section className="relative pt-32 sm:pt-40 pb-20 sm:pb-24 px-6 max-w-6xl mx-auto overflow-hidden">
+
       {/* Background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black to-black" />
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-cyan-400/5 blur-[160px] rounded-full animate-pulse -z-10" />
